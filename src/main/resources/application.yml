@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: odata-boilerplate
+    management:
+      endpoints:
+        web:
+          exposure:
+            include: '*'
+  profiles: cloud
+  jpa:
+    show-sql: false
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    url: ${JDBC_DATASOURCE_URL}
+    username: ${JDBC_DATABASE_USERNAME}
+    password: ${JDBC_DATABASE_PASSWORD}
+
+
+---
+spring:
+  application:
+    name: odata-boilerplate
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: '*'
+  profiles: default
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non-contextual-creation: true
+

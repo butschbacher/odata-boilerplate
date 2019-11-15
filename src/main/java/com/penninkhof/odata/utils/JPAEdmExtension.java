@@ -33,6 +33,7 @@ public class JPAEdmExtension implements org.apache.olingo.odata2.jpa.processor.a
 	
 	@Override
 	public void extendWithOperation(JPAEdmSchemaView view) {
+		view.registerOperations(FunctionImport.class, null);
 	}
 
 	@Override
