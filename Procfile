@@ -1,0 +1,1 @@
+web: java -war target/odata-0.1.0.war
