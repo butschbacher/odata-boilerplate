@@ -19,8 +19,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.withUser("admin").password(encoder.encode("123")).roles("USER", "ADMIN");
 	}
 
+//	@Override
+//	protected void configure(HttpSecurity http) throws Exception {
+//		http.authorizeRequests().anyRequest().authenticated().and().httpBasic();
+//	}
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().anyRequest().authenticated().and().httpBasic();
+	  http.csrf()
+	  	  .disable()
+	  	  .httpBasic().and()
+	  	  .authorizeRequests().anyRequest().authenticated();
 	}
 }
